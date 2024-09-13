@@ -27,7 +27,7 @@ export const NavItemPhone = ({ to, children }) => {
         smooth={true}
         duration={300}
         spy={true}
-        offset={-100}
+        offset={-80}
         activeClass='bg-blue-600'
         className={
           'cursor-pointer hover:bg-whiteColor hover:text-black poppins-regular text-white px-10 py-1 rounded-3xl transition duration-200 ease-in-out'
