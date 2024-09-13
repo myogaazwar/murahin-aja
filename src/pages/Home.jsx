@@ -1,9 +1,9 @@
-import { Footer } from '../components/Footer/Footer';
+import Footer from '../components/Footer/Footer';
 import Jumbotron from '../components/Jumbotron/Jumbotron';
-import { Navbar } from '../components/Navbar/Navbar';
-import { Products } from '../components/Products/Products';
+import Navbar from '../components/Navbar/Navbar';
+import Products from '../components/Products/Products';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <Navbar />
@@ -13,3 +13,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;
