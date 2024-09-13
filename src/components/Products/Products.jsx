@@ -4,7 +4,7 @@ import { Card } from '../Elements/Card/Card';
 import Section from '../Elements/Section/Section';
 import redShirt from '/image/shirt-red.png';
 
-export const Products = () => {
+const Products = () => {
   return (
     <>
       <Section id={'products'} classname={' max-sm:px-0 p-5 h-full'}>
@@ -34,3 +34,5 @@ export const Products = () => {
     </>
   );
 };
+
+export default Products;

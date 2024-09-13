@@ -1,6 +1,6 @@
 import Section from '../Elements/Section/Section';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <div classname={' mt-10 w-full bg-blue-700'}>
       <div className='bg-blue-700 h-12 flex items-center justify-center'>
@@ -11,3 +11,5 @@ export const Footer = () => {
     </div>
   );
 };
+
+export default Footer;

@@ -4,7 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import Button from '../Elements/Button/Button';
 import { NavItem, NavItemPhone } from '../Elements/NavItem/NavItem';
 
-export const Navbar = () => {
+const Navbar = () => {
   const [isOpenNav, setIsOpenNav] = useState(false);
 
   const toggleNavbar = () => {
@@ -80,3 +80,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;
