@@ -54,24 +54,35 @@ const Navbar = () => {
           <NavItemPhone to={'about-us'}>About Us</NavItemPhone>
 
           <div className='flex flex-col gap-y-5 px-5 text-lg absolute bottom-24 w-full'>
-            <Button classname={'  bg-blue-600 text-white hover:bg-blue-700'}>
-              <NavLink to={'/login'}>Login</NavLink>
-            </Button>
-            <Button classname={'text-black bg-whiteColor hover:bg-slate-200'}>
-              <NavLink to={'/register'}>Register</NavLink>
-            </Button>
+            <NavLink to={'/login'}>
+              <Button
+                classname={' w-full bg-blue-600 text-white hover:bg-blue-700'}
+              >
+                Login
+              </Button>
+            </NavLink>
+
+            <NavLink to={'/register'}>
+              <Button
+                classname={'w-full text-black bg-whiteColor hover:bg-slate-200'}
+              >
+                Register
+              </Button>
+            </NavLink>
           </div>
         </ul>
         {/* End Phone Device */}
 
         {!isOpenNav && (
           <div className='flex gap-x-3 max-md:hidden text-white'>
-            <Button classname={'bg-blue-600 hover:bg-blue-700'}>
-              <NavLink to={'/login'}>Login</NavLink>
-            </Button>
-            <Button classname={'bg-blue-600 hover:bg-blue-700'}>
-              <NavLink to={'/register'}>Register</NavLink>
-            </Button>
+            <NavLink to={'/login'}>
+              <Button classname={'bg-blue-600 hover:bg-blue-700'}>Login</Button>
+            </NavLink>
+            <NavLink to={'/register'}>
+              <Button classname={'bg-blue-600 hover:bg-blue-700'}>
+                Register
+              </Button>
+            </NavLink>
           </div>
         )}
 
