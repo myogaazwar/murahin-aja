@@ -3,7 +3,7 @@ import InputForm from '../Elements/Input/Index';
 
 const FormLogin = () => {
   return (
-    <form action=''>
+    <form>
       <InputForm
         key={'email'}
         name={'email'}

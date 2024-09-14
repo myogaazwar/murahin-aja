@@ -3,7 +3,7 @@ import InputForm from '../Elements/Input/Index';
 
 const FormRegister = () => {
   return (
-    <form action=''>
+    <form>
       <InputForm
         id={'fullname'}
         name={'fullname'}
