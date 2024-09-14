@@ -11,11 +11,15 @@ export const Card = ({
     <div
       className={`poppins-semibold ${classname} bg-whiteColor p-2 rounded-2xl mt-7 shadow-md flex flex-col justify-between`}
     >
-      <div>
+      <div className='mb-4'>
         <p className='max-sm:text-xs text-sm text-gray-400'>{titleCategory}</p>
-        <h3 className='max-lg:text-sm'>{titleProduct}</h3>
+        <h3 className='max-lg:text-[10px]'>
+          {titleProduct && titleProduct.length > 20
+            ? `${titleProduct.substring(0, 100)}...`
+            : titleProduct}
+        </h3>
       </div>
-      <img className='w-full' src={image} alt={titleProduct} />
+      <img className='w-full md:w-64 md:h-64' src={image} alt={titleProduct} />
 
       <div className='max-[425px]:flex-col  flex justify-between items-center mt-5 mb-2'>
         <p className='max-md:text-sm max-sm:text-xs pl-2'>{price}</p>
