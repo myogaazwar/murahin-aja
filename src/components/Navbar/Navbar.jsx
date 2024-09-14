@@ -55,7 +55,7 @@ const Navbar = () => {
 
           <div className='flex flex-col gap-y-5 px-5 text-lg absolute bottom-24 w-full'>
             <Button classname={'  bg-blue-600 text-white hover:bg-blue-700'}>
-              <NavLink>Login</NavLink>
+              <NavLink to={'/login'}>Login</NavLink>
             </Button>
             <Button classname={'text-black bg-whiteColor hover:bg-slate-200'}>
               <NavLink to={'/register'}>Register</NavLink>
@@ -67,7 +67,7 @@ const Navbar = () => {
         {!isOpenNav && (
           <div className='flex gap-x-3 max-md:hidden text-white'>
             <Button classname={'bg-blue-600 hover:bg-blue-700'}>
-              <NavLink>Login</NavLink>
+              <NavLink to={'/login'}>Login</NavLink>
             </Button>
             <Button classname={'bg-blue-600 hover:bg-blue-700'}>
               <NavLink to={'/register'}>Register</NavLink>
