@@ -4,6 +4,8 @@ import { FaBars } from 'react-icons/fa';
 import Button from '../Elements/Button/Button';
 import { NavItem, NavItemPhone } from '../Elements/NavItem/NavItem';
 
+import { NavLink } from 'react-router-dom';
+
 const Navbar = () => {
   const [isOpenNav, setIsOpenNav] = useState(false);
 
@@ -53,10 +55,10 @@ const Navbar = () => {
 
           <div className='flex flex-col gap-y-5 px-5 text-lg absolute bottom-24 w-full'>
             <Button classname={'  bg-blue-600 text-white hover:bg-blue-700'}>
-              Login
+              <NavLink>Login</NavLink>
             </Button>
             <Button classname={'text-black bg-whiteColor hover:bg-slate-200'}>
-              Register
+              <NavLink to={'/register'}>Register</NavLink>
             </Button>
           </div>
         </ul>
@@ -64,9 +66,11 @@ const Navbar = () => {
 
         {!isOpenNav && (
           <div className='flex gap-x-3 max-md:hidden text-white'>
-            <Button classname={'bg-blue-600 hover:bg-blue-700'}>Login</Button>
             <Button classname={'bg-blue-600 hover:bg-blue-700'}>
-              Register
+              <NavLink>Login</NavLink>
+            </Button>
+            <Button classname={'bg-blue-600 hover:bg-blue-700'}>
+              <NavLink to={'/register'}>Register</NavLink>
             </Button>
           </div>
         )}
