@@ -3,25 +3,33 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { FaBars } from 'react-icons/fa';
 import Button from '../Elements/Button/Button';
 import { NavItem, NavItemPhone } from '../Elements/NavItem/NavItem';
-
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpenNav, setIsOpenNav] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    console.log('Checking login status...');
+
+    const checkLoginStatus = () => {
+      const loginStatus = localStorage.getItem('isLogin');
+      setIsLoggedIn(!!loginStatus);
+    };
+
+    checkLoginStatus();
+  }, []);
 
   const toggleNavbar = () => {
     setIsOpenNav((isOpen) => !isOpen);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 760) {
-        setIsOpenNav(false);
-      }
-    };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
 
-    window.addEventListener('resize', handleResize);
-  }, [isOpenNav]);
+    localStorage.removeItem('isLogin');
+    window.location.href = '/';
+  };
 
   return (
     <nav className='w-full fixed border-b-2 border-blue-200 bg-whiteColor text-mainTextColor transition duration-300 '>
@@ -54,35 +62,82 @@ const Navbar = () => {
           <NavItemPhone to={'about-us'}>About Us</NavItemPhone>
 
           <div className='flex flex-col gap-y-5 px-5 text-lg absolute bottom-24 w-full'>
-            <NavLink to={'/login'}>
-              <Button
-                classname={' w-full bg-blue-600 text-white hover:bg-blue-700'}
-              >
-                Login
-              </Button>
-            </NavLink>
+            {!isLoggedIn ? (
+              <>
+                <NavLink to={'/login'}>
+                  <Button
+                    classname={
+                      'w-full bg-blue-600 text-white hover:bg-blue-700'
+                    }
+                  >
+                    Login
+                  </Button>
+                </NavLink>
 
-            <NavLink to={'/register'}>
-              <Button
-                classname={'w-full text-black bg-whiteColor hover:bg-slate-200'}
-              >
-                Register
-              </Button>
-            </NavLink>
+                <NavLink to={'/register'}>
+                  <Button
+                    classname={
+                      'w-full text-black bg-whiteColor hover:bg-slate-200'
+                    }
+                  >
+                    Register
+                  </Button>
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to={'/profile'}>
+                  <Button
+                    classname={
+                      'w-full text-white bg-blue-600 hover:bg-blue-700'
+                    }
+                  >
+                    Profile
+                  </Button>
+                </NavLink>
+
+                <Button
+                  classname={'w-full bg-red-600 text-white hover:bg-red-700'}
+                  onSelect={handleLogout}
+                >
+                  Logout
+                </Button>
+              </>
+            )}
           </div>
         </ul>
         {/* End Phone Device */}
 
         {!isOpenNav && (
           <div className='flex gap-x-3 max-md:hidden text-white'>
-            <NavLink to={'/login'}>
-              <Button classname={'bg-blue-600 hover:bg-blue-700'}>Login</Button>
-            </NavLink>
-            <NavLink to={'/register'}>
-              <Button classname={'bg-blue-600 hover:bg-blue-700'}>
-                Register
-              </Button>
-            </NavLink>
+            {!isLoggedIn ? (
+              <>
+                <NavLink to={'/login'}>
+                  <Button classname={'bg-blue-600 hover:bg-blue-700'}>
+                    Login
+                  </Button>
+                </NavLink>
+                <NavLink to={'/register'}>
+                  <Button classname={'bg-blue-600 hover:bg-blue-700'}>
+                    Register
+                  </Button>
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to={'/profile'}>
+                  <Button classname={'bg-blue-600 hover:bg-blue-700'}>
+                    Profile
+                  </Button>
+                </NavLink>
+                <Button
+                  onSelect={handleLogout}
+                  classname={'bg-red-600 hover:bg-red-700'}
+                >
+                  Logout
+                </Button>
+              </>
+            )}
           </div>
         )}
 
