@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import { useContext, useEffect } from 'react';
 import { userContext } from '../../main';
 
-const FormRegister = () => {
+const FormRegister = ({ setSuccessMessage }) => {
   const { user, setUser } = useContext(userContext);
 
   const schema = yup.object({
@@ -36,6 +36,8 @@ const FormRegister = () => {
       email: data.email,
       password: data.password,
     });
+
+    setSuccessMessage('Selamat Kamu Berhasil Registrasi');
   };
 
   useEffect(() => {
