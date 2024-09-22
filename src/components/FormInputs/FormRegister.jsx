@@ -4,8 +4,12 @@ import InputForm from '../Elements/Input/Index';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useContext, useEffect } from 'react';
+import { userContext } from '../../main';
 
 const FormRegister = () => {
+  const { user, setUser } = useContext(userContext);
+
   const schema = yup.object({
     fullname: yup.string().required('Harap isi nama lengkap!'),
     email: yup.string().email().required('Harap isi kolom email!'),
@@ -27,8 +31,18 @@ const FormRegister = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    console.log(data);
+    setUser({
+      fullname: data.fullname,
+      email: data.email,
+      password: data.password,
+    });
   };
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+  }, [user]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
